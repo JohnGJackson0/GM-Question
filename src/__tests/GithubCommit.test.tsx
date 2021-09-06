@@ -4,7 +4,12 @@ import { GithubCommit } from "../GithubCommit";
 
 describe("GithubCommit", () => {
   test("Should render correctly", () => {
-    const wrapper = render(<GithubCommit />);
-    wrapper.getByTestId("github-commit");
+    const component = render(<GithubCommit />);
+    component.getByTestId("github-commit");
   });
+  test("Should contain commit message passed as prop", () => {
+    const { getByText } = render(<GithubCommit message="example" />);
+    getByText(/example/);
+  });
+  
 });
