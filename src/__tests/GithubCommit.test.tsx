@@ -11,5 +11,8 @@ describe("GithubCommit", () => {
     const { getByText } = render(<GithubCommit message="example" />);
     getByText(/example/);
   });
-  
+  test("Should contain author passed as prop", () => {
+    const { getByText } = render(<GithubCommit author="author example" />);
+    getByText(/author example/);
+  });
 });
