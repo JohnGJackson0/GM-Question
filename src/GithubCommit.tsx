@@ -1,6 +1,10 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 
-export function GithubCommit() {
-  return <View testID="github-commit"></View>;
+export function GithubCommit(props: any) {
+  return (
+    <View testID="github-commit">
+      <Text>{props.message}</Text>
+    </View>
+  );
 }
