@@ -5,6 +5,7 @@ export function GithubCommit(props: any) {
   return (
     <View testID="github-commit">
       <Text>{props.message}</Text>
+      <Text>{props.author}</Text>
     </View>
   );
 }
