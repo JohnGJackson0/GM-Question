@@ -15,4 +15,8 @@ describe("GithubCommit", () => {
     const { getByText } = render(<GithubCommit author="author example" />);
     getByText(/author example/);
   });
+  test("Should contain commit hash passes as prop", () => {
+    const { getByText } = render(<GithubCommit hash="hash example" />);
+    getByText(/hash example/);
+  });
 });
