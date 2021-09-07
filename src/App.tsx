@@ -13,7 +13,6 @@ function App() {
       const {
         data: { items },
       } = await GithubCommitCall();
-      console.log("the items ", items);
       setData(items);
     })();
   }, []);
@@ -29,7 +28,7 @@ function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#EDF0F2",
     alignItems: "center",
     justifyContent: "center",
   },
