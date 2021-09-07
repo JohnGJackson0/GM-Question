@@ -18,11 +18,14 @@ export const GithubCommits = () => {
         <></>
       ) : (
         <View>
-          <GithubCommit
-            message={apiResponse.data.items[0].commit.message}
-            author={apiResponse.data.items[0].commit.author.name}
-            hash={apiResponse.data.items[0].sha}
-          />
+          {apiResponse.data.items.map((item: any, index: number) => (
+            <GithubCommit
+              data-testid={`commit-item-${index}`}
+              message={item.commit.message}
+              author={item.commit.author.name}
+              hash={item.sha}
+            />
+          ))}
         </View>
       )}
     </View>
