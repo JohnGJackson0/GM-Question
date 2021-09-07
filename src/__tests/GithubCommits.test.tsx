@@ -13,6 +13,15 @@ describe("GithubCommits", () => {
     },
     sha: "SHA1",
   });
+  stub.push({
+    commit: {
+      author: {
+        name: "name two",
+      },
+      message: "commit two",
+    },
+    sha: "SHA2",
+  });
 
   test("Should render correctly", () => {
     const component = render(<GithubCommits data={stub} />);
@@ -22,5 +31,22 @@ describe("GithubCommits", () => {
   test("Should render Github message", async () => {
     const { getByTestId } = render(<GithubCommits data={stub} />);
     await getByTestId("commit-item-0");
+  });
+
+  test("Should display Github message", () => {
+    const { getByText } = render(<GithubCommits data={stub} />);
+    getByText(/commit one/);
+  });
+  test("Should display SHA code", () => {
+    const { getByText } = render(<GithubCommits data={stub} />);
+    getByText(/SHA1/);
+  });
+  test("Should display author", () => {
+    const { getByText } = render(<GithubCommits data={stub} />);
+    getByText(/name one/);
+  });
+  test("Should display second commit message", () => {
+    const { getByText } = render(<GithubCommits data={stub} />);
+    getByText(/commit two/);
   });
 });
