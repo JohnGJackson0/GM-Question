@@ -1,29 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { View, Text } from "react-native";
+import React from "react";
+import { View } from "react-native";
 import { GithubCommit } from "./GithubCommit";
-import { GithubCommitCall } from "./GithubCommitCall";
 
-export const GithubCommits = () => {
-  const [apiResponse, setApiResponse] = useState<any>();
-
-  useEffect(() => {
-    GithubCommitCall().then((response) => {
-      setApiResponse(response);
-    });
-  }, []);
-
+export const GithubCommits = ({ data }: { data: any }) => {
   return (
     <View testID="github-commits">
-      {apiResponse == undefined ? (
+      {data == undefined ? (
         <></>
       ) : (
         <View>
-          {apiResponse.data.items.map((item: any, index: number) => (
+          {data.map((item: any, index: number) => (
             <GithubCommit
               data-testid={`commit-item-${index}`}
               message={item.commit.message}
               author={item.commit.author.name}
               hash={item.sha}
+              key={item.sha}
             />
           ))}
         </View>
